@@ -32,7 +32,7 @@ except Exception as e:
 
 
 # Lendo arquivos na pasta
-arq = "C:\\learn\\3 - sql\\bootcamp-eng-dados\\igti-case\\bootcamp-data-engineer\\modulo-02\\arquivos"
+arq = "C:\\nome da pasta\\nome do local dos arquivos csv\\arquivos"
 
 display(arq)
 
