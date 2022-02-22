@@ -27,10 +27,3 @@ try:
 except Exception as e:
     print(f"Conexão não realizada! {e}")
     
-    
-    
-    
-    
-    
-    
-    
