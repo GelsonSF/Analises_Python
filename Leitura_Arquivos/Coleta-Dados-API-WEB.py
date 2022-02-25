@@ -63,5 +63,4 @@ except Exception as e:
     print(f'Problema ao buscar e popular a lista! {e}')
 
 #### Teste do dataframe ####
-
 display(df)
