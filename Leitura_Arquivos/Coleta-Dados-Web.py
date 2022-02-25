@@ -44,20 +44,17 @@ cr.execute(CRIAR_TABELA)
 cr.commit()
 
 def comportamento_humano(segundos=None):
-    
     if not segundos:
         segundos = random.randrange(2,8)
     time.sleep(segundos)
     
 def verifica_preco(produto, valor_procurado, valor_atual, url):
-    
     if valor_atual < valor_procurado:
         print(f'Oportunidade de compra! O produto: {produto} abaixou o preço! R${valor_atual}\n Acesse: {url}')
     else:
         print(f'O produto {produto} não está com o valor desejado!')
         
 def inserir_registro(produto, valor_atual, valor_procurado, URL):
-   
     data_coleta = datetime.datetime.now()
     try:
         query = f"""
@@ -73,7 +70,6 @@ def inserir_registro(produto, valor_atual, valor_procurado, URL):
         print(f'Não foi possível adicional o item {produto}. Erro: {e}')
         
 lista_produtos = []
-
 lista_produtos.append(('https://www.mercadolivre.com.br/notebook-acer-aspire-5-a514-53-prata-14-intel-core-i5-1035g1-4gb-de-ram-256gb-ssd-intel-uhd-graphics-g1-60-hz-1366x768px-windows-10-home/p/MLB18620959#reco_item_pos=1&reco_backend=machinalis-homes-pdp-boos&reco_backend_type=function&reco_client=home_navigation-recommendations&reco_id=f887ef83-09eb-4ab6-9f8e-90cc24a60a15&c_id=/home/navigation-recommendations/element&c_element_order=2&c_uid=652e5a3d-7333-4576-8ded-dca97f04af8d', 5000))
 lista_produtos.append(('https://www.mercadolivre.com.br/notebook-lenovo-ideapad-15iml05-platinum-gray-156-intel-core-i5-10210u-8gb-de-ram-256gb-ssd-intel-uhd-graphics-620-1366x768px-windows-10-home/p/MLB18448291#reco_item_pos=3&reco_backend=machinalis-homes-pdp-boos&reco_backend_type=function&reco_client=home_navigation-recommendations&reco_id=f17a0262-5e38-40e8-a11c-be9d8aa7a221&c_id=/home/navigation-recommendations/element&c_element_order=4&c_uid=cf314d2a-106e-44a7-8df7-37778cc19c62', 1500))
 lista_produtos.append(('https://www.mercadolivre.com.br/cafeteira-mondial-espresso-coffee-cream-premium-c-08-automatica-preta-e-prateada-expresso-120v/p/MLB14236778?pdp_filters=category:MLB9188#searchVariation=MLB14236778&position=3&search_layout=stack&type=product&tracking_id=c7efd754-fed9-45f9-be0b-fcd0852e78c7', 510))
