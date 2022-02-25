@@ -1,5 +1,8 @@
 import requests
 import pandas as pd
+import json
+
+from pandas.io.json import json_normalize 
 
 #### Preparação para a extração dos nomes de pokemon ####
 try:
@@ -35,6 +38,8 @@ def busca_pokemon(pokemons_names):
     try:
         api = f'https://pokeapi.co/api/v2/pokemon/{pokemons_names}'
         res = requests.get(api)
+       # poke = res.json()
+       # t = pd.json_normalize(poke, orient='records')
         if res.ok:
             return res.json()
 
@@ -43,7 +48,6 @@ def busca_pokemon(pokemons_names):
         print(f'Problema ao se conectar a API! {e}')
 
 #### Teste da função busca_pokemon ####
-
 busca_pokemon(pokemons_names['Name'][1])
 
 #### Busca das informações dos 3 primeiros pokemons da lista, e load para  ####
@@ -53,14 +57,17 @@ try:
     for infos in pokemons_names['Name'][:3]:
         info = busca_pokemon(infos)
         print(f'{info}')
-        info_pokemons.append(info),
+        info_pokemons.append(info)
     
-    #df = pd.DataFrame(lista)
-    df = pd.DataFrame(lista, columns = ['id', 'order' , 'name', 'forms', 'base_experience', 'abilities', 'moves', 'species', 'stats', 'types', 'height', 'weight', 'location_area_encounters', 'game_indices', 'sprites'])
+    df = pd.DataFrame(info_pokemons)
+    #df = pd.DataFrame(infos_pokemons, columns = ['id', 'order' , 'name', 'forms', 'base_experience', 'abilities', 'moves', 'species', 'stats', 'types', 'height', 'weight', 'location_area_encounters', 'game_indices', 'sprites'])
         
     print(f'Lista populada com sucesso!')
 except Exception as e:
     print(f'Problema ao buscar e popular a lista! {e}')
 
 #### Teste do dataframe ####
+df = pd.DataFrame(info_pokemons, columns = ['id', 'order' , 'name', 'forms', 'base_experience', 'abilities', 'moves', 'species', 'stats', 'types', 'height', 'weight', 'location_area_encounters', 'game_indices', 'sprites'])
+
 display(df)
+    
