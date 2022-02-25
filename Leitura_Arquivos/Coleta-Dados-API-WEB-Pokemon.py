@@ -10,8 +10,8 @@ def extract_pokemons_name():
         requ = resp.json()
 
         for i in requ['forms']:
-          for j in requ['types']:
-            infos[i['name']] = j['type']['name']
+            for j in requ['types']:
+                infos[i['name']] = j['type']['name']
 
         df = pd.DataFrame([infos])
         df = df.set_index(i['name'])
